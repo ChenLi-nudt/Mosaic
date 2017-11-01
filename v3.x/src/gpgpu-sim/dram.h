@@ -138,7 +138,8 @@ struct bank_t {
 
 struct mem_fetch;
 
-class dram_t {
+class dram_t 
+{
 public:
   dram_t(unsigned int parition_id, const struct memory_config *config, class memory_stats_t *stats,
       class memory_partition_unit *mp, mmu * page_manager, tlb_tag_array * shared_tlb);
@@ -197,8 +198,14 @@ public:
   void insert_dram_command(dram_cmd * cmd);
 
   // Power Model
-  void set_dram_power_stats(unsigned &cmd, unsigned &activity, unsigned &nop, unsigned &act,
-      unsigned &pre, unsigned &rd, unsigned &wr, unsigned &req) const;
+  void set_dram_power_stats(unsigned &cmd, 
+  							unsigned &activity, 
+  							unsigned &nop, 
+  							unsigned &act,
+  							unsigned &pre, 
+  							unsigned &rd, 
+  							unsigned &wr, 
+  							unsigned &req) const;
 
 private:
   void scheduler_fifo();

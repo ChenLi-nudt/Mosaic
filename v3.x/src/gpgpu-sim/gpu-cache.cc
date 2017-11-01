@@ -1016,7 +1016,7 @@ enum cache_request_status data_cache::wr_miss_wa(new_addr_type addr, unsigned ca
       mf->get_access_warp_mask(), mf->get_access_byte_mask());
 
   mem_fetch *n_mf = new mem_fetch(*ma,
-  NULL, mf->get_ctrl_size(), mf->get_wid(), mf->get_sid(), mf->get_tpc(), mf->get_mem_config());
+  NULL, mf->get_ctrl_size(), mf->get_wid(),/*mf->get_cta_id(), +++*/ mf->get_sid(), mf->get_tpc(), mf->get_mem_config());
 
   bool do_miss = false;
   bool wb = false;
@@ -1198,7 +1198,7 @@ enum cache_request_status data_cache::access(new_addr_type addr, mem_fetch *mf, 
     app->total_access_cache++;
   }
   if (m_isL1 && mf->get_mem_config()->TLB_flush_enable
-      && (app->total_access_cache > mf->get_mem_config()->TLB_flush_freq)) {
+      && (app->total_access_cache > mf->get_mem_config()->TLB_flush_freq)) {//flush the TLB when total access num is larger than the frequece threshold
     flush_count++;
     app->total_access_cache = 0;
     m_tlb_tag_array->get_shared_tlb()->flush(mf->get_appID()); // Send the flush command to shared TLB

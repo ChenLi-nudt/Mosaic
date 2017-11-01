@@ -207,7 +207,9 @@ opencllib: makedirs cuda-sim
 	$(MAKE) -C ./libopencl/
 
 .PHONY: cuobjdump_to_ptxplus/cuobjdump_to_ptxplus
-cuobjdump_to_ptxplus/cuobjdump_to_ptxplus: cuda-sim makedirs
+#cuobjdump_to_ptxplus/cuobjdump_to_ptxplus: cuda-sim makedirs
+cuobjdump_to_ptxplus/cuobjdump_to_ptxplus: makedirs
+
 	$(MAKE) -C ./cuobjdump_to_ptxplus/ depend
 	$(MAKE) -C ./cuobjdump_to_ptxplus/
 

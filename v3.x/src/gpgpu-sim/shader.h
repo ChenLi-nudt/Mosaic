@@ -1665,6 +1665,7 @@ class shader_core_mem_fetch_allocator : public mem_fetch_allocator {
           NULL,
           wr?WRITE_PACKET_SIZE:READ_PACKET_SIZE,
           -1,
+		  //-1, +++
           m_core_id,
           m_cluster_id,
           m_memory_config );
@@ -1678,7 +1679,8 @@ class shader_core_mem_fetch_allocator : public mem_fetch_allocator {
           &inst_copy,
           access.is_write()?WRITE_PACKET_SIZE:READ_PACKET_SIZE,
           inst.warp_id(),
-          m_core_id,
+          //inst.cta_id(), +++
+		  m_core_id,
           m_cluster_id,
           m_memory_config);
       return mf;

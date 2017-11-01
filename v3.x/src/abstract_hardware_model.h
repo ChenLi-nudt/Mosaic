@@ -806,12 +806,13 @@ public:
     {
         m_empty=true;
     }
-    void issue( const active_mask_t &mask, unsigned warp_id, unsigned long long cycle, int dynamic_warp_id )
+    void issue( const active_mask_t &mask, unsigned warp_id, /*unsigned cta_id,*/unsigned long long cycle, int dynamic_warp_id )
     {
         m_warp_active_mask = mask;
         m_warp_issued_mask = mask;
         m_uid = ++sm_next_uid;
         m_warp_id = warp_id;
+        //m_cta_id = cta_id; +++
         m_dynamic_warp_id = dynamic_warp_id;
         issue_cycle = cycle;
         cycles = initiation_interval;
@@ -895,6 +896,14 @@ public:
         assert( !m_empty );
         return m_warp_id;
     }
+    /*  +++
+     unsigned cta_id() const
+     {
+     	 assert( !m_empty );
+     	 return  m_cta_id;
+     }
+
+     */
     unsigned dynamic_warp_id() const
     {
         assert( !m_empty );
@@ -944,6 +953,7 @@ protected:
     bool m_isatomic;
     bool m_is_printf;
     unsigned m_warp_id;
+    //unsigned m_cta_id; +++
     unsigned m_dynamic_warp_id;
     const core_config *m_config;
     active_mask_t m_warp_active_mask; // dynamic active mask for timing model (after predication)

@@ -67,12 +67,19 @@ std::list<unsigned> shader_core_ctx::get_regs_written(const inst_t &fvt) const {
   return result;
 }
 
-shader_core_ctx::shader_core_ctx(class gpgpu_sim *gpu, class simt_core_cluster *cluster,
-    unsigned shader_id, unsigned tpc_id, const struct shader_core_config *config,
-    const struct memory_config *mem_config, shader_core_stats *stats, mmu * page_manager,
-    tlb_tag_array * shared_tlb) :
-    core_t(gpu, NULL, config->warp_size, config->n_thread_per_shader), m_barriers(
-        config->max_warps_per_shader, config->max_cta_per_core), m_dynamic_warp_id(0) {
+shader_core_ctx::shader_core_ctx(class gpgpu_sim *gpu, 
+                                 class simt_core_cluster *cluster,
+    						     unsigned shader_id, 
+    						     unsigned tpc_id, 
+    						     const struct shader_core_config *config,
+    							 const struct memory_config *mem_config, 
+    							 shader_core_stats *stats, 
+    							 mmu * page_manager,
+						         tlb_tag_array * shared_tlb)
+						          : core_t(gpu, NULL, config->warp_size, config->n_thread_per_shader), 
+						          m_barriers( config->max_warps_per_shader, config->max_cta_per_core), 
+						          m_dynamic_warp_id(0)
+ {
   m_kernel = NULL; //new
   m_gpu = gpu; //new
   m_cluster = cluster;
@@ -141,9 +148,17 @@ shader_core_ctx::shader_core_ctx(class gpgpu_sim *gpu, class simt_core_cluster *
     switch (scheduler) {
       case CONCRETE_SCHEDULER_LRR:
         schedulers.push_back(
-            new lrr_scheduler(m_stats, this, m_scoreboard, m_simt_stack, &m_warp,
-                &m_pipeline_reg[ID_OC_SP], &m_pipeline_reg[ID_OC_SFU], &m_pipeline_reg[ID_OC_MEM],
-                i));
+            new lrr_scheduler( m_stats, 
+            				   this,
+            				   m_scoreboard, 
+            				   m_simt_stack, 
+            				   &m_warp,
+               				   &m_pipeline_reg[ID_OC_SP], 
+               				   &m_pipeline_reg[ID_OC_SFU], 
+               				   &m_pipeline_reg[ID_OC_MEM],
+                               i
+                               )
+                               );
         break;
       case CONCRETE_SCHEDULER_TWO_LEVEL_ACTIVE:
         schedulers.push_back(
@@ -708,8 +723,7 @@ void shader_core_ctx::fetch() {
       unsigned warp_id = (m_last_warp_fetched + 1 + i) % m_config->max_warps_per_shader;
 
       // this code checks if this warp has finished executing and can be reclaimed
-      if (m_warp[warp_id].hardware_done() && !m_scoreboard->pendingWrites(warp_id)
-          && !m_warp[warp_id].done_exit()) {
+      if (m_warp[warp_id].hardware_done() && !m_scoreboard->pendingWrites(warp_id)&& !m_warp[warp_id].done_exit()) {
         bool did_exit = false;
         for (unsigned t = 0; t < m_config->warp_size; t++) {
           unsigned tid = warp_id * m_config->warp_size + t;
@@ -728,20 +742,19 @@ void shader_core_ctx::fetch() {
       }
 
       // this code fetches instructions from the i-cache or generates memory requests
-      if (!m_warp[warp_id].functional_done() && !m_warp[warp_id].imiss_pending()
-          && m_warp[warp_id].ibuffer_empty()) {
+      if (!m_warp[warp_id].functional_done() && !m_warp[warp_id].imiss_pending()&& m_warp[warp_id].ibuffer_empty()) {
         address_type pc = m_warp[warp_id].get_pc();
         address_type ppc = pc + PROGRAM_MEM_START;
         unsigned nbytes = 16;
         unsigned offset_in_block = pc & (m_config->m_L1I_config.get_line_sz() - 1);
         if ((offset_in_block + nbytes) > m_config->m_L1I_config.get_line_sz())
           nbytes = (m_config->m_L1I_config.get_line_sz() - offset_in_block);
-
+        //unsigned cta_id = m_warp[warp_id].get_cta_id(); +++
         // mem_fetch *mf = m_mem_fetch_allocator->alloc()
         mem_access_t acc(INST_ACC_R, ppc, nbytes, false);
         mem_fetch *mf = new mem_fetch(acc,
-        NULL/*we don't have an instruction yet*/,
-        READ_PACKET_SIZE, warp_id, m_sid, m_tpc, m_memory_config);
+       								 NULL/*we don't have an instruction yet*/,
+      								  READ_PACKET_SIZE, warp_id, /*unsigned cta_id,+++*/  m_sid, m_tpc, m_memory_config);
         std::list<cache_event> events;
         enum cache_request_status status = m_L1I->access((new_addr_type) ppc, mf,
             gpu_sim_cycle + gpu_tot_sim_cycle, events);
@@ -790,7 +803,8 @@ void shader_core_ctx::issue_warp(register_set& pipe_reg_set, const warp_inst_t* 
   m_warp[warp_id].ibuffer_free();
   assert(next_inst->valid());
   **pipe_reg = *next_inst; // static instruction information
-  (*pipe_reg)->issue(active_mask, warp_id, gpu_tot_sim_cycle + gpu_sim_cycle,
+  //unsigned cta_id = m_warp[warp_id].get_cta_id();+++
+  (*pipe_reg)->issue(active_mask, warp_id, /*cta_id,+++*/gpu_tot_sim_cycle + gpu_sim_cycle,
       m_warp[warp_id].get_dynamic_warp_id()); // dynamic instruction information
   m_stats->total_shader_cycle_distro[2 + (*pipe_reg)->active_count()]++;
 
@@ -1258,8 +1272,7 @@ address_type coalesced_segment(address_type addr, unsigned segment_size_lg2bytes
 }
 
 // Returns numbers of addresses in translated_addrs, each addr points to a 4B (32-bit) word
-unsigned shader_core_ctx::translate_local_memaddr(address_type localaddr, unsigned tid,
-    unsigned num_shader, unsigned datasize, new_addr_type* translated_addrs) {
+unsigned shader_core_ctx::translate_local_memaddr(address_type localaddr, unsigned tid,    unsigned num_shader, unsigned datasize, new_addr_type* translated_addrs) {
   // During functional execution, each thread sees its own memory space for local memory, but these
   // need to be mapped to a shared address space for timing simulation.  We do that mapping here.
 
@@ -1278,8 +1291,7 @@ unsigned shader_core_ctx::translate_local_memaddr(address_type localaddr, unsign
     // for a given local memory address threads in a CTA map to contiguous addresses,
     // then distribute across memory space by CTAs from successive shader cores first,
     // then by successive CTA in same shader core
-    thread_base = 4
-        * (kernel_padded_threads_per_cta
+    thread_base = 4*(kernel_padded_threads_per_cta
             * (m_sid + num_shader * (tid / kernel_padded_threads_per_cta))
             + tid % kernel_padded_threads_per_cta);
     max_concurrent_threads = kernel_padded_threads_per_cta * kernel_max_cta_per_shader * num_shader;
@@ -1476,9 +1488,13 @@ bool ldst_unit::shared_cycle(warp_inst_t &inst, mem_stage_stall_type &rc_fail,
   return !stall;
 }
 
-mem_stage_stall_type ldst_unit::process_cache_access(cache_t* cache, new_addr_type address,
-    warp_inst_t &inst, std::list<cache_event>& events, mem_fetch *mf,
-    enum cache_request_status status) {
+mem_stage_stall_type ldst_unit::process_cache_access(cache_t* cache,
+													 new_addr_type address,
+    												 warp_inst_t &inst, 
+    												 std::list<cache_event>& events, 
+    												 mem_fetch *mf,
+												     enum cache_request_status status) 
+{						
 
   if (m_memory_config->capture_VA && (mf->get_tlb_depth_count() == 0)) 
       {
@@ -1539,9 +1555,9 @@ mem_stage_stall_type ldst_unit::process_memory_access_queue(cache_t *cache, warp
 }
 
 bool ldst_unit::constant_cycle(warp_inst_t &inst, mem_stage_stall_type &rc_fail,
-    mem_stage_access_type &fail_type) {
-  if (inst.empty()
-      || ((inst.space.get_type() != const_space) && (inst.space.get_type() != param_space_kernel)))
+    mem_stage_access_type &fail_type) 
+{
+  if (inst.empty() || ((inst.space.get_type() != const_space) && (inst.space.get_type() != param_space_kernel)))
     return true;
   if (inst.active_count() == 0)
     return true;

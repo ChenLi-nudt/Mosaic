@@ -1,0 +1,300 @@
+
+EPOCH STATISTICS CYCLE = 0
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 0
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 0
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 0
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 0
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 10000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 1
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 10000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 10000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 10000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 10000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 20000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 20000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 20000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 20000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 20000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 30000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 30000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 30000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 30000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0
+
+EPOCH STATISTICS CYCLE = 30000
+===========================
+tlb_hit_app0_epoch = 0
+tlb2_hit_app0_epoch = 0
+tlb_miss_app0_epoch = 0
+tlb2_miss_app0_epoch = 0
+tlb_access_app0_epoch = 0
+tlb2_access_app0_epoch = 0
+l1cache_hit_app0_epoch = 0
+l2cache_hit_app0_epoch = 0
+l1cache_miss_app0_epoch = 0
+l2cache_miss_app0_epoch = 0
+l1cache_access_app0_epoch = 0
+l2cache_access_app0_epoch = 0

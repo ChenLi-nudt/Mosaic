@@ -39,7 +39,7 @@ echo "build type set to $GPGPUSIM_BUILD_TYPE"
 
 #Modify these two lines
 export CUDAHOME=/usr/local/cuda
-export NVIDIA_CUDA_SDK_LOCATION=/home/rachata/NVIDIA_GPU_Computing_SDK
+export NVIDIA_CUDA_SDK_LOCATION=/home/chen/NVIDIA_GPU_Computing_SDK
 #export NVIDIA_CUDA_SDK_LOCATION=/usr/local/cuda-samples
 
 export LD_LIBRARY_PATH=$CUDAHOME/lib/:$LD_LIBRARY_PATH

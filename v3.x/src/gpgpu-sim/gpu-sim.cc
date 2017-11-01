@@ -215,9 +215,9 @@ void memory_config::reg_options(class OptionParser * opp)
   option_parser_register(opp, "-l2_tlb_invalidate_latency", OPT_UINT32, &l2_tlb_invalidate_latency,
       "Latency for L1 TLB invalidation (Default = 200 cycles)", "200");
   option_parser_register(opp, "-enable_PCIe", OPT_BOOL, &enable_PCIe,
-      "Enable PCIe latency (otherwise PCIe latency = 0)", "false");
+      "Enable PCIe latency (otherwise PCIe latency = 0)", "0");
   option_parser_register(opp, "-capture_VA", OPT_BOOL, &capture_VA,
-      "Tracing Virtual Address from the runs (true/false)", "false");
+      "Tracing Virtual Address from the runs (true/false)", "0");
   option_parser_register(opp, "-va_trace_file", OPT_CSTR, &va_trace_file,
       "Output file of the virtual address", "VA.trace");
   option_parser_register(opp, "-va_mask", OPT_CSTR, &va_mask,
@@ -292,7 +292,7 @@ void memory_config::reg_options(class OptionParser * opp)
   option_parser_register(opp, "-tlb_prefetch_buffer_size", OPT_UINT32, &tlb_prefetch_buffer_size,
       "TLB Prefetch buffer size (per core)", "16");
   option_parser_register(opp, "-capture_VA_map", OPT_BOOL, &capture_VA_map,
-      "Tracing Virtual Address from the runs (true/false)", "false");
+      "Tracing Virtual Address from the runs (true/false)", "0");
   option_parser_register(opp, "-pt_file", OPT_CSTR, &pt_file,
       "Input page table trace", "pt_map.trace");
   option_parser_register(opp, "-epoch_file", OPT_CSTR, &epoch_file,
@@ -300,7 +300,7 @@ void memory_config::reg_options(class OptionParser * opp)
   option_parser_register(opp, "-epoch_length", OPT_UINT32, &epoch_length,
       "Stat collection epoch length", "10000");
   option_parser_register(opp, "-epoch_length", OPT_BOOL, &epoch_enabled,
-      "Stat collection epoch (true/false), default - true", "true");
+      "Stat collection epoch (true/false), default - true", "1");
   option_parser_register(opp, "-tlb_cache_depth", OPT_UINT32, &max_tlb_cache_depth,
       "How many levels is the TLB cache", "0");
   option_parser_register(opp, "-tlb_victim_size", OPT_UINT32, &tlb_victim_size,
@@ -350,7 +350,7 @@ void memory_config::reg_options(class OptionParser * opp)
   option_parser_register(opp, "-max_DRAM_high_prio_combo", OPT_UINT32, &max_DRAM_high_prio_combo,
       "How many consecutive high prio requests are issued", "8");
   option_parser_register(opp, "-dram_batch", OPT_BOOL, &dram_batch,
-      "Batch high priority DRAM requests (true/false)", "false");
+      "Batch high priority DRAM requests (true/false)", "0");
   option_parser_register(opp, "-page_transfer_time", OPT_UINT32, &page_transfer_time,
       "PCIe latency to transfer a page (default = 1000)", "1000");
   option_parser_register(opp, "-tlb_size", OPT_UINT32, &tlb_size,

@@ -57,6 +57,7 @@ mem_fetch * partition_mf_allocator::alloc(new_addr_type addr, mem_access_type ty
       NULL,
       WRITE_PACKET_SIZE,
       -1,
+	  //-1, +++
       sid,
       -1,
       m_memory_config );

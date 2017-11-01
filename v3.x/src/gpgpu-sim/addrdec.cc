@@ -124,7 +124,7 @@ bool linear_to_raw_address_translation::addrdec_tlx(new_addr_type in_addr, addrd
   unsigned long long int addr_for_chip,rest_of_addr;
   unsigned num_app = ConfigOptions::n_apps;
 
-  assert(false);
+  //assert(false);
   /*
   if (!gap) {
     if(m_config->channel_partition == 1) //Equal partitioning

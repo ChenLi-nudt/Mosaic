@@ -56,7 +56,7 @@ CUFILES		:= LUH/lulesh.cu SPMV/main_spmv.cu TRD/Triad.cu SCAN/Scan.cu CFD/euler3
 
 # C/C++ source files (compiled with gcc / c++)
 CCFILES		:= main.cpp SPMV/gpu_info.cpp SPMV/file.cpp SC/streamcluster_cuda_cpu.cpp \
-    QTC/libdata.cpp RAY/EasyBMP.cpp RAY/makebmp.cpp CONS/main.cpp \
+    QTC/libdata.cpp RAY/EasyBMP.cpp RAY/makebmp.cpp CONS/main_CONS.cpp \
     CONS/convolutionSeparable_gold.cpp BP/backprop.cpp FWT/fastWalshTransform_gold.cpp \
     LPS/laplace3d_gold.cpp SCP/scalarProd_gold.cpp JPEG/BmpUtil.cpp JPEG/DCT8x8_Gold.cpp \
     MM/io.cpp BLK/BlackScholes_gold.cpp

@@ -62,7 +62,7 @@ class memory_partition_unit;
 
 class mem_fetch {
 public:
-  mem_fetch(const mem_access_t &access, const warp_inst_t *inst, unsigned ctrl_size, unsigned wid,
+  mem_fetch(const mem_access_t &access, const warp_inst_t *inst, unsigned ctrl_size, unsigned wid, /*unsigned cta_id,+++*/
       unsigned sid, unsigned tpc, const class memory_config *config);
   mem_fetch(mem_fetch * mf);
 
@@ -139,6 +139,9 @@ public:
   unsigned get_wid() const {
     return m_wid;
   }
+  //unsigned get_cta_id() const {    +++
+  //  return m_cta_id;
+  //}
   bool istexture() const;
   bool isconst() const;
   enum mf_type get_type() const {
@@ -278,6 +281,7 @@ private:
   unsigned m_sid;
   unsigned m_tpc;
   unsigned m_wid;
+  //unsigned m_cta_id;   +++
 
   bool m_page_fault;
   bool m_tlb_miss;

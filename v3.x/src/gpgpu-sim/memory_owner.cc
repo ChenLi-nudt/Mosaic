@@ -229,7 +229,7 @@ page_table_entry* page_table::add_entry(new_addr_type address, appid_t appID, bo
       if (new_page == NULL) {
         PT_DEBUG << "Not enough space to allocate for page of size " << m_config->base_page_size
           << " for page table entry" << std::endl;
-        current_fillable_address = rand();
+        current_fillable_address = rand();//randomly find an address. The page replacement policy can be extended here.
       } else
         current_fillable_address = new_page->starting_addr;
       PT_DEBUG << "Acquiring a new page for this entry. new page base addr = "
@@ -1583,7 +1583,7 @@ void mmu::send_scan_request() {
 page_metadata * mmu::update_metadata(new_addr_type va, appid_t appID) {
   //Get the page from VA
   new_addr_type searchID = ((va >> m_config->page_size) << m_config->page_size); // | appID;
-  assert(false);
+  //assert(false);
   // this was originally ored with appID. WHY???
   page * the_page = (*va_to_page_mapping)[searchID];
 
@@ -1602,8 +1602,13 @@ bool mmu::allocate_PA(new_addr_type va_base, new_addr_type pa_base, appid_t appI
       ", VA base is " << target_page->va_page_addr <<
       " (Occupy page for this app should contain this page), cycle = " << gpu_sim_cycle +
       gpu_tot_sim_cycle << ". use_value = " << target_page->used << std::endl;
-    (*va_to_page_mapping)[searchID] = target_page;
-    return true;
+    //std::cout<<va_base<<"  cccc"<<std::endl;
+    //(*va_to_page_mapping)[searchID] = target_page;
+    //assert(va_to_page_mapping->find(searchID) != va_to_page_mapping->end());
+    (*va_to_page_mapping)[va_base] = target_page;
+    assert(va_to_page_mapping->find(va_base) != va_to_page_mapping->end());
+    //std::cout<<searchID<<"  bbbb"<<std::endl;
+	return true;
   }
   ALLOC_DEBUG << "Physical page for VA = " << va_base << ", app = " << appID << "either is not in DRAM (Impossible) or clash with page table space." << std::endl;
   return false;
@@ -1615,6 +1620,7 @@ bool mmu::allocate_PA(new_addr_type va_base, new_addr_type pa_base, appid_t appI
 page * DRAM_layout::allocate_PA(new_addr_type va_base, new_addr_type pa_base, appid_t appID) {
   //Grab this physical page, check if it is occupied by PT
   ALLOC_DEBUG << "Trying to get physical page for VA = " << va_base << " using PA " << pa_base << "  as the key. App creation ID = " << appID << std::endl;
+
   page * target_page = find_page_from_pa(pa_base); 
 
   if (target_page == NULL) {
@@ -1625,7 +1631,7 @@ page * DRAM_layout::allocate_PA(new_addr_type va_base, new_addr_type pa_base, ap
 
   //If so, return false, do nothing
   if (target_page->appID == App::pt_space.appid)
-    return NULL;
+	  return NULL;
 
   //Otherwise, allocate the page, update page metadata, create the PTE entry for this page
 
@@ -1689,8 +1695,8 @@ new_addr_type mmu::get_pa(new_addr_type addr, appid_t appID, bool * fault, bool 
 
   page * this_page = NULL;
 
-  new_addr_type searchID = ((addr >> m_config->page_size) << m_config->page_size); // | appID;
-  assert(false);
+  new_addr_type searchID =((addr >> m_config->page_size) << m_config->page_size); // | appID;
+  //assert(false);
   // this was originally ored with appID...
 
   //Check if this page has their own PT entries setup or not. (VA page seen before, VA not seen)
@@ -1708,9 +1714,12 @@ new_addr_type mmu::get_pa(new_addr_type addr, appid_t appID, bool * fault, bool 
       ". First time access. Allcating this page in the mmu to keep track of metadata" <<
       std::endl;
     //Allocate this page
-    allocate_PA((addr >> m_config->page_size) << m_config->page_size,
-        (result >> m_config->page_size) << m_config->page_size, appID);
+    //allocate_PA((addr >> m_config->page_size) << m_config->page_size,
+    allocate_PA(searchID,(result >> m_config->page_size) << m_config->page_size, appID);
+    //std::cout<<searchID<<std::endl;
+    assert(va_to_page_mapping->find(searchID) != va_to_page_mapping->end());
   }
+
 
   this_page = (*va_to_page_mapping)[searchID];
   if (this_page == NULL) {

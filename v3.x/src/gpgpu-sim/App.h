@@ -26,6 +26,7 @@ public:
   bool operator>(const appid_t& other) const { return this->my_id > other.my_id; }
   friend std::ostream& operator<<(std::ostream& os, const appid_t& appid);
   friend struct std::hash<appid_t>;
+  //static uint32_t next_identifier;
 private:
   static uint32_t next_identifier;
   uint32_t my_id;

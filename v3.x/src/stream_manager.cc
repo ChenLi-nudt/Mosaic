@@ -100,18 +100,19 @@ void CUstream_st::print(FILE *fp) {
   pthread_mutex_unlock(&this->stream_lock);
 }
 
-void stream_operation::do_operation(gpgpu_sim *gpu) {
+void stream_operation::do_operation(gpgpu_sim *gpu) 
+{
   if (is_noop())
     return;
 
   assert(!m_done && m_stream);
 
-  assert(false);
+  //assert(false);
   // this will not get the app
   App* app = App::get_app(App::get_app_id(this->m_stream->get_stream_id()));
 
   if (g_debug_execution >= 3)
-    printf("GPGPU-Sim API: stream %u performing ", m_stream->get_stream_id());
+     printf("GPGPU-Sim API: stream %u performing ", m_stream->get_stream_id());
   switch (m_type) {
     case stream_memcpy_host_to_device:
       if (g_debug_execution >= 3) {

@@ -70,6 +70,7 @@ class page_table_entry{
     bool isRead;
     bool inDRAM;
     page_table* parent_pt;
+    //add list of TBs
 };
 
 class page_table{

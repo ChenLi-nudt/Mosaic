@@ -168,28 +168,28 @@ struct memory_config {
          // named dram timing options (unordered)
          option_parser_t dram_opp = option_parser_create();
 
-         option_parser_register(dram_opp, "nbk",  OPT_UINT32, &nbk,   "number of banks", "");
-         option_parser_register(dram_opp, "CCD",  OPT_UINT32, &tCCD,  "column to column delay", "");
-         option_parser_register(dram_opp, "RRD",  OPT_UINT32, &tRRD,  "minimal delay between activation of rows in different banks", "");
-         option_parser_register(dram_opp, "RCD",  OPT_UINT32, &tRCD,  "row to column delay", "");
-         option_parser_register(dram_opp, "RAS",  OPT_UINT32, &tRAS,  "time needed to activate row", "");
-         option_parser_register(dram_opp, "RP",   OPT_UINT32, &tRP,   "time needed to precharge (deactivate) row", "");
-         option_parser_register(dram_opp, "RC",   OPT_UINT32, &tRC,   "row cycle time", "");
-         option_parser_register(dram_opp, "CDLR", OPT_UINT32, &tCDLR, "switching from write to read (changes tWTR)", "");
-         option_parser_register(dram_opp, "WR",   OPT_UINT32, &tWR,   "last data-in to row precharge", "");
+		 option_parser_register(dram_opp, "nbk",  OPT_UINT32, &nbk,   "number of banks", "1"); 
+         option_parser_register(dram_opp, "CCD",  OPT_UINT32, &tCCD,  "column to column delay", "1"); 
+         option_parser_register(dram_opp, "RRD",  OPT_UINT32, &tRRD,  "minimal delay between activation of rows in different banks", "1"); 
+         option_parser_register(dram_opp, "RCD",  OPT_UINT32, &tRCD,  "row to column delay", "1"); 
+         option_parser_register(dram_opp, "RAS",  OPT_UINT32, &tRAS,  "time needed to activate row", "1"); 
+         option_parser_register(dram_opp, "RP",   OPT_UINT32, &tRP,   "time needed to precharge (deactivate) row", "1"); 
+         option_parser_register(dram_opp, "RC",   OPT_UINT32, &tRC,   "row cycle time", "1"); 
+         option_parser_register(dram_opp, "CDLR", OPT_UINT32, &tCDLR, "switching from write to read (changes tWTR)", "1"); 
+         option_parser_register(dram_opp, "WR",   OPT_UINT32, &tWR,   "last data-in to row precharge", "1"); 
 
-         option_parser_register(dram_opp, "CL", OPT_UINT32, &CL, "CAS latency", "");
-         option_parser_register(dram_opp, "WL", OPT_UINT32, &WL, "Write latency", "");
+         option_parser_register(dram_opp, "CL", OPT_UINT32, &CL, "CAS latency", "1"); 
+         option_parser_register(dram_opp, "WL", OPT_UINT32, &WL, "Write latency", "1"); 
 
          //Disabling bank groups if their values are not specified
-         option_parser_register(dram_opp, "nbkgrp", OPT_UINT32, &nbkgrp, "number of bank groups", "1");
-         option_parser_register(dram_opp, "CCDL",   OPT_UINT32, &tCCDL,  "column to column delay between accesses to different bank groups", "0");
-         option_parser_register(dram_opp, "RTPL",   OPT_UINT32, &tRTPL,  "read to precharge delay between accesses to different bank groups", "0");
+         option_parser_register(dram_opp, "nbkgrp", OPT_UINT32, &nbkgrp, "number of bank groups", "1"); 
+         option_parser_register(dram_opp, "CCDL",   OPT_UINT32, &tCCDL,  "column to column delay between accesses to different bank groups", "0"); 
+         option_parser_register(dram_opp, "RTPL",   OPT_UINT32, &tRTPL,  "read to precharge delay between accesses to different bank groups", "0"); 
 
-         option_parser_delimited_string(dram_opp, gpgpu_dram_timing_opt, "=:;");
-         fprintf(stdout, "DRAM Timing Options:\n");
-         option_parser_print(dram_opp, stdout);
-         option_parser_destroy(dram_opp);
+         option_parser_delimited_string(dram_opp, gpgpu_dram_timing_opt, "=:;"); 
+         fprintf(stdout, "DRAM Timing Options:\n"); 
+         option_parser_print(dram_opp, stdout); 
+         option_parser_destroy(dram_opp); 
       }
 
 
@@ -206,18 +206,18 @@ struct memory_config {
          // named dram timing options (unordered)
          option_parser_t dram_opp = option_parser_create();
 
-         option_parser_register(dram_opp, "nsa",  OPT_UINT32, &num_subarray,   "number of subarrays", "");
-         option_parser_register(dram_opp, "sCCD",  OPT_UINT32, &sCCD,  "column to column delay", "");
-         option_parser_register(dram_opp, "sRRD",  OPT_UINT32, &sRRD,  "minimal delay between activation of rows in different banks", "");
-         option_parser_register(dram_opp, "sRCD",  OPT_UINT32, &sRCD,  "row to column delay", "");
-         option_parser_register(dram_opp, "sRAS",  OPT_UINT32, &sRAS,  "time needed to activate row", "");
-         option_parser_register(dram_opp, "sRP",   OPT_UINT32, &sRP,   "time needed to precharge (deactivate) row", "");
-         option_parser_register(dram_opp, "sRC",   OPT_UINT32, &sRC,   "row cycle time", "");
-         option_parser_register(dram_opp, "sCDLR", OPT_UINT32, &sCDLR, "switching from write to read (changes tWTR)", "");
-         option_parser_register(dram_opp, "sWR",   OPT_UINT32, &sWR,   "last data-in to row precharge", "");
+         option_parser_register(dram_opp, "nsa",  OPT_UINT32, &num_subarray,   "number of subarrays", "0");
+         option_parser_register(dram_opp, "sCCD",  OPT_UINT32, &sCCD,  "column to column delay", "0");
+         option_parser_register(dram_opp, "sRRD",  OPT_UINT32, &sRRD,  "minimal delay between activation of rows in different banks", "0");
+         option_parser_register(dram_opp, "sRCD",  OPT_UINT32, &sRCD,  "row to column delay", "0");
+         option_parser_register(dram_opp, "sRAS",  OPT_UINT32, &sRAS,  "time needed to activate row", "0");
+         option_parser_register(dram_opp, "sRP",   OPT_UINT32, &sRP,   "time needed to precharge (deactivate) row", "0");
+         option_parser_register(dram_opp, "sRC",   OPT_UINT32, &sRC,   "row cycle time", "0");
+         option_parser_register(dram_opp, "sCDLR", OPT_UINT32, &sCDLR, "switching from write to read (changes tWTR)", "0");
+         option_parser_register(dram_opp, "sWR",   OPT_UINT32, &sWR,   "last data-in to row precharge", "0");
 
-         option_parser_register(dram_opp, "sCL", OPT_UINT32, &sCL, "CAS latency", "");
-         option_parser_register(dram_opp, "sWL", OPT_UINT32, &sWL, "Write latency", "");
+         option_parser_register(dram_opp, "sCL", OPT_UINT32, &sCL, "CAS latency", "0");
+         option_parser_register(dram_opp, "sWL", OPT_UINT32, &sWL, "Write latency", "0");
          option_parser_register(dram_opp, "sCCDL",   OPT_UINT32, &sCCDL,  "column to column delay between accesses to different bank groups", "0");
          option_parser_register(dram_opp, "sRTPL",   OPT_UINT32, &sRTPL,  "read to precharge delay between accesses to different bank groups", "0");
 

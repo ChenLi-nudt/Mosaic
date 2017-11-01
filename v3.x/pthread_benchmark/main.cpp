@@ -15,82 +15,82 @@
 #include "App.h"
 
 struct app_data {
-  app_data(char* app_name, pthread_mutex_t* app_mutex, bool concurrent,
+  app_data(char* app_name, bool concurrent,
       cudaEvent_t* done, std::vector<cudaEvent_t>* done_events, size_t app_num) :
-      app_name(app_name), mutex(app_mutex), concurrent(concurrent),
-      done(done), done_events(done_events), appID(app_num) {
+      app_name(app_name), concurrent(concurrent), done(done), done_events(done_events), appID(app_num) {
     cutilSafeCall(cudaStreamCreate(&stream));
   }
   cudaStream_t stream;
   cudaEvent_t* done;
   std::vector<cudaEvent_t>* done_events;
   char* app_name;
-  pthread_mutex_t* mutex;
   bool concurrent;
   size_t appID;
 };
 
-int callApp(struct app_data* app) {
+pthread_mutex_t mutex;
+
+int callApp(struct app_data* app, pthread_mutex_t *mutex) {
   if (strcmp(app->app_name, "NN") == 0)
-    main_NN(app->stream, app->mutex, app->concurrent);
+    main_NN(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "BP") == 0)
-    main_BP(app->stream, app->mutex, app->concurrent);
+    main_BP(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "FFT") == 0)
-    main_fft(app->stream, app->mutex, app->concurrent);
+    main_fft(app->stream, mutex, app->concurrent);
 //  else if(strcmp(app->app_name,"MUM") == 0)
-//    main_MUM(app->stream, app->mutex, app->concurrent);
+//    main_MUM(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "LUH") == 0)
-    main_lulesh(app->stream, app->mutex, app->concurrent);
+    main_lulesh(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "RED") == 0)
-    main_RED(app->stream, app->mutex, app->concurrent);
+    main_RED(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "SCAN") == 0)
-    main_scan(app->stream, app->mutex, app->concurrent);
+    main_scan(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "CFD") == 0)
-    main_cfd(app->stream, app->mutex, app->concurrent);
+    main_cfd(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "TRD") == 0)
-    main_TRD(app->stream, app->mutex, app->concurrent);
+    main_TRD(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "SPMV") == 0)
-    main_spmv(app->stream, app->mutex, app->concurrent);
+    main_spmv(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "NW") == 0)
-    main_nw(app->stream, app->mutex, app->concurrent);
+    main_nw(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "3DS") == 0)
-    main_threeDS(app->stream, app->mutex, app->concurrent);
+    main_threeDS(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "HS") == 0)
-    main_hotspot(app->stream, app->mutex, app->concurrent);
+    main_hotspot(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "HISTO") == 0)
-    main_histo(app->stream, app->mutex, app->concurrent);
+    main_histo(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "SC") == 0)
-    main_streamcluster(app->stream, app->mutex, app->concurrent);
+    main_streamcluster(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "SCP") == 0)
-    main_SCP(app->stream, app->mutex, app->concurrent);
+    main_SCP(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "GUPS") == 0)
-    main_gups(app->stream, app->mutex, app->concurrent);
+    main_gups(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "QTC") == 0)
-    main_QTC(app->stream, app->mutex, app->concurrent);
+    main_QTC(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "LUD") == 0)
-    main_LUD(app->stream, app->mutex, app->concurrent);
+    main_LUD(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "SRAD") == 0)
-    main_SRAD(app->stream, app->mutex, app->concurrent);
+    main_SRAD(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "CONS") == 0)
-    main_CONS(app->stream, app->mutex, app->concurrent);
+    main_CONS(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "SAD") == 0)
-    main_sad(app->stream, app->mutex, app->concurrent);
+    main_sad(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "MM") == 0)
-    main_MM(app->stream, app->mutex, app->concurrent);
+    main_MM(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "JPEG") == 0)
-    main_JPEG(app->stream, app->mutex, app->concurrent);
+    main_JPEG(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "BFS2") == 0)
-    main_BFS2(app->stream, app->mutex, app->concurrent);
+    main_BFS2(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "FWT") == 0)
-    main_FWT(app->stream, app->mutex, app->concurrent);
+    main_FWT(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "LPS") == 0)
-    main_LPS(app->stream, app->mutex, app->concurrent);
+    main_LPS(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "LIB") == 0)
-    main_lib(app->stream, app->mutex, app->concurrent);
+    main_lib(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "RAY") == 0)
-    main_ray(app->stream, app->mutex, app->concurrent);
+    main_ray(app->stream, mutex, app->concurrent);
   else if (strcmp(app->app_name, "BLK") == 0)
-    main_BlackScholes(app->stream, app->mutex, app->concurrent);
+    main_BlackScholes(app->stream, mutex, app->concurrent);
   else
     return EXIT_FAILURE;
   return EXIT_SUCCESS;
@@ -104,14 +104,15 @@ void* benchmark(void *app_arg) {
   int ret;
   bool some_running = false;
   do {
-    pthread_mutex_lock(app->mutex);
+    pthread_mutex_lock(&mutex);
     printf("Launch code in main.cu:launching a new benchmark, appID = %s\n", app->appID);
     assert(!App::is_registered(app->appID));
     App::register_app(app->appID);
-    ret = callApp(app);
+    ret = callApp(app, &mutex);
     if (ret) {
-      fprintf(stderr, "Error launching benchmark %s\n", app->app_name);
+    	fprintf(stderr, "Error launching benchmark %s\n", app->app_name);
     }
+    some_running = false;
     cutilSafeCall(cudaEventRecord(*app->done, app->stream));
     // Loop until all apps have completed one iteration
     for (std::vector<cudaEvent_t>::iterator e = app->done_events->begin();
@@ -171,17 +172,17 @@ int main(int argc, char *argv[]) {
   std::vector<void*> status(n_apps, NULL);
   std::vector<pthread_t> threads(n_apps, 0);
   std::vector<cudaEvent_t> done_events(n_apps, 0);
-  pthread_mutex_t app_mutex;
+  pthread_mutex_t mutex;
 
   // set global state hack
   ConfigOptions::n_apps = n_apps;
 
-  pthread_mutex_init(&app_mutex, NULL);
+  pthread_mutex_init(&mutex, NULL);
 
   bool concurrent = n_apps > 1;
   for (size_t i = 0; i < n_apps; i++) {
     cutilSafeCall(cudaEventCreate(&done_events[i]));
-    apps.push_back(app_data(args.apps[i], &app_mutex, concurrent,
+    apps.push_back(app_data(args.apps[i], concurrent,
         &done_events[i], &done_events, i));
   }
   // Launch benchmark threads
@@ -209,7 +210,7 @@ int main(int argc, char *argv[]) {
     cutilSafeCall(cudaStreamDestroy(apps[i].stream));
   }
 
-  pthread_mutex_destroy(&app_mutex);
+  pthread_mutex_destroy(&mutex);
   printf("Main: program completed. Exiting.\n");
 
   return 0;

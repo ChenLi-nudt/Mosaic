@@ -111,7 +111,7 @@ mem_fetch::mem_fetch(mem_fetch * mf) {
 }
 
 mem_fetch::mem_fetch(const mem_access_t &access, const warp_inst_t *inst, unsigned ctrl_size,
-    unsigned wid, unsigned sid, unsigned tpc, const class memory_config *config) {
+    unsigned wid, /*unsigned cta_id,+++*/ unsigned sid, unsigned tpc, const class memory_config *config) {
 
   m_request_uid = sm_next_mf_request_uid++;
   m_access = access;
@@ -124,6 +124,7 @@ mem_fetch::mem_fetch(const mem_access_t &access, const warp_inst_t *inst, unsign
   m_sid = sid;
   m_tpc = tpc;
   m_wid = wid;
+  //m_cta_id = cta_id; +++
   m_tlb = NULL; // By default, this should be null
   //config->m_address_mapping.addrdec_tlx(access.get_addr(),&m_raw_addr, 0);
   //m_partition_addr = config->m_address_mapping.partition_address(access.get_addr(), 0);
